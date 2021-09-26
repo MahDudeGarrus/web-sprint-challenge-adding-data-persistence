@@ -6,7 +6,7 @@ exports.up = function(knex) {
         .notNullable()
       table.string('task_notes', 256)
       table.boolean('task_completed')
-        // .defaultTo(false)
+        .defaultTo(false)
       table.integer('project_id')
         .unsigned()
         .references('project_id')
