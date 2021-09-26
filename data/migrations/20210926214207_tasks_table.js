@@ -5,7 +5,7 @@ exports.up = function(knex) {
       table.string('task_description', 256)
         .notNullable()
       table.string('task_notes', 256)
-      table.boolean('task_completed')
+      table.bool('task_completed')
         .defaultTo(false)
       table.integer('project_id')
         .unsigned()
