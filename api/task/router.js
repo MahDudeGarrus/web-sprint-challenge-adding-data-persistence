@@ -17,8 +17,13 @@ router.get('/', async (req, res, next) => {
 
 router.post('/', async (req, res, next) => {
     try{
-        const tasks = await Task.create(req.body)
-        res.json(tasks)
+        const newTask = await Task.create(req.body)
+        if (newTask.task_completed === 1 || newTask.task_completed === true){
+            newTask.task_completed = true
+        } else {
+            newTask.task_completed = false
+        }
+        res.json(newTask)
     } catch (error) {
         next (error)
     }
