@@ -15,7 +15,7 @@ router.get('/', async (req, res, next) => {
     }
 })
 
-router.post('/', async (err, req, res, next) => {
+router.post('/', async (req, res, next) => {
     try{
         const newTask = await Task.create(req.body)
         if (newTask.task_completed === 1 || newTask.task_completed === true){
