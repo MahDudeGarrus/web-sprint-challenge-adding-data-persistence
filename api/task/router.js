@@ -23,10 +23,6 @@ router.post('/', async (err, req, res, next) => {
         } else {
             newTask.task_completed = false
         }
-
-        if (!newTask.project_id){
-            next(err)
-        }
         res.json(newTask)
     } catch (error) {
         next (error)
