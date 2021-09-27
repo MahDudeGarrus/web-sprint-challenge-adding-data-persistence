@@ -15,13 +15,17 @@ router.get('/', async (req, res, next) => {
     }
 })
 
-router.post('/', async (req, res, next) => {
+router.post('/', async (err, req, res, next) => {
     try{
         const newTask = await Task.create(req.body)
         if (newTask.task_completed === 1 || newTask.task_completed === true){
             newTask.task_completed = true
         } else {
             newTask.task_completed = false
+        }
+
+        if (!newTask.project_id){
+            next(err)
         }
         res.json(newTask)
     } catch (error) {
